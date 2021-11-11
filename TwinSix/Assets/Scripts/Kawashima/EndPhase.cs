@@ -19,5 +19,12 @@ public class EndPhase : MonoBehaviour
     public static void ResetProperty(ref int dice)
     {
         dice = 0;
-    } 
+    }
+    // 次のターンへ移行
+    public static void TurnEnd(int playerNo, int playerSum, ref int turn)
+    {
+        // 現在のプレイヤーが最後のメンバーなら次のターンへ
+        if (playerNo == playerSum) turn++;
+
+    }
 }
