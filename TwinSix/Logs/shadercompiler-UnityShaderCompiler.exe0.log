@@ -14,5 +14,9 @@ Cmd: compileSnippet
 =======
 >>>>>>> feature_MovePhase
 =======
+<<<<<<< HEAD
 >>>>>>> feature_DicePhase
+=======
+>>>>>>> feature_EventPhase
+>>>>>>> 27b2e179082cd347e2da18b2afef086a823037a3
 Cmd: shutdown
