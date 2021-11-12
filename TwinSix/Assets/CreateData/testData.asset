@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065068d10ad1b3c498d1fdbbb07ffff9, type: 3}
   m_Name: testData
   m_EditorClassIdentifier: 
-  mapName: testData
-  mapPosition: {x: 0, y: 0, z: 0}
-  type: 3
-  nextMap:
-  - {fileID: 0}
-  beforeMap: {fileID: 0}
+  mapNameData: testData
+  mapPositionData: {x: 2, y: 2, z: 2}
+  mapEventData: {fileID: 8328670215694624117, guid: fb7d78f3b1e34bf4d95309ac970856fd, type: 3}
+  nextMapData:
+  - {fileID: 11400000, guid: cf166633233d8b94697ce26b1e5bc0de, type: 2}
+  beforeMapData:
+  - {fileID: 11400000}
