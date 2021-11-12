@@ -28,27 +28,31 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
     {
         public static int GameTurn { get; private set; } = 1; // 現在のゲームターン
 
-        public static bool phaseFlg { get; private set; } = true; // フェーズの進行を管理するフラグ
-
         public static int myNumber { get; private set; } = 0; // 自身の端末の番号
 
         public static int playingNumber { get; private set; } = 0; // 現在動かされている端末番号
 
-        private static List<PlayerStatus> status_s = new List<PlayerStatus>(); // プレイヤーステータスを格納するリスト
+        private static List<PlayerStatus> targetPlayerNumber = new List<PlayerStatus>(); // 対象にとる番号(プレイヤー用)
+
+        private static List<MapInfoScriptableObject> targetMapNumber = new List<MapInfoScriptableObject>(); // 対象にとるマップ名称(マップ用)
+
+        private static List<PlayerStatus> statuses = new List<PlayerStatus>(); // プレイヤーステータスを格納するリスト
+
+        private static List<MapInfoScriptableObject> maps = new List<MapInfoScriptableObject>();
 
         /// <summary>！！アクセス注意！！　引数のidを元に対応したステータスを返します</summary>
         /// <param name="orderID">受け取りたいキャラクターid</param>
         /// <returns></returns>
         public static PlayerStatus PlayerStatusGeter(int orderID)
         {
-            if (status_s.Count <= orderID)
+            if (statuses.Count <= orderID)
             {
                 Debug.LogError($"予期せぬ番号を確認しました　値の再確認を行ってください 対応番号({orderID})");
                 return null;
             }
             else
             {
-                return status_s[orderID];
+                return statuses[orderID];
             }
         }
 
@@ -57,14 +61,14 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
         /// <returns></returns>
         public static PlayerStatus PlayerStatusSeter(PlayerStatus orderStatus)
         {
-            if (status_s.Count <= orderStatus.id)
+            if (statuses.Count <= orderStatus.id)
             {
                 Debug.LogError($"予期せぬ番号を確認しました　値の再確認を行ってください 対応番号({orderStatus.id})");
                 return null;
             }
             else
             {
-                return status_s[orderStatus.id] = orderStatus;
+                return statuses[orderStatus.id] = orderStatus;
             }
         }
 
@@ -73,21 +77,21 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
         {
             set
             {
-                if (status_s.Count <= MAX_PLAYER_NUMBER) status_s.Add(value);
+                if (statuses.Count <= MAX_PLAYER_NUMBER) statuses.Add(value);
                 else Debug.LogError("上限以上のステータス設定の可能性があります　上限値を確認して下さい");
             }
+        }
+
+
+        public static void MapStatusSeter(List<MapInfoScriptableObject> newMapList)
+        {
+            maps = newMapList;
         }
 
         /// <summary>！！アクセス注意！！　ゲームターンを増やします</summary>
         public static void AddGameTurn()
         {
             GameTurn++;
-        }
-
-        /// <summary>！！アクセス注意！！　フェーズ移行のフラグを変更します</summary>
-        public static void SetPhaseFlg(bool newPhaseFlg)
-        {
-            phaseFlg = newPhaseFlg;
         }
 
         /// <summary>！！アクセス注意！！　自身の番号を格納します</summary>
@@ -111,6 +115,55 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
             else playingNumber = 0;
         }
 
-    }
+        /// <summary> ！！ アクセス注意 ！！ 登録済みのマップ状況を初期状態まで戻します</summary>
+        public static void MapResetOrder()
+        {
+            for (int i = 0;i < maps.Count;i++)
+            {
+                maps[i].ResetData();
+            }
+        }
 
+        /// <summary> ！！ アクセス注意 ！！ 対象プレイヤーを追加します</summary>
+        /// <param name="target"></param>
+        public static void TargetListBind_Player(PlayerStatus target)
+        {
+            targetPlayerNumber.Add(target);
+        }
+
+        /// <summary> ！！ アクセス注意 ！！ 対象マップを追加します</summary>
+        /// <param name="target"></param>
+        public static void TargetListBind_Map(MapInfoScriptableObject target)
+        {
+            targetMapNumber.Add(target);
+        }
+
+        /// <summary> ！！ アクセス注意 ！！ 対象に全てのプレイヤーを追加します</summary>
+        public static void TargetAllBind_Player()
+        {
+            targetPlayerNumber.Clear();
+            targetPlayerNumber = statuses;
+        }
+
+        /// <summary> ！！ アクセス注意 ！！ 対象にすべてのマップを追加します</summary>
+        public static void TargetAllBind_Map()
+        {
+            targetMapNumber.Clear();
+            targetMapNumber = maps;
+        }
+
+        /// <summary> ！！ アクセス注意 ！！ 対象プレイヤーのリストを返します</summary>
+        /// <returns></returns>
+        public static List<PlayerStatus> GetTargetList_Player()
+        {
+            return targetPlayerNumber;
+        }
+
+        /// <summary> ！！ アクセス注意 ！！ 対象マップのリストを返します</summary>
+        /// <returns></returns>
+        public static List<MapInfoScriptableObject> GetTargetList_Map()
+        {
+            return targetMapNumber;
+        }
+    }
 }

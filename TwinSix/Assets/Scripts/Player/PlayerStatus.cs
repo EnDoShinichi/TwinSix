@@ -8,7 +8,7 @@ public class PlayerStatus : MonoBehaviour
 {
     // 前回のPlayerStatusと異なり実体を持つPlayerStatus シリアライズ化されている
 
-    [SerializeField, NonSerialized] private int maneyData = 10000;
+    [SerializeField, NonSerialized] private int moneyData = 10000;
 
     [SerializeField, NonSerialized] private int ID = -1;
 
@@ -24,26 +24,26 @@ public class PlayerStatus : MonoBehaviour
 
     [SerializeField, NonSerialized] private bool actionData = true;
 
-    [SerializeField, NonSerialized] private int debugPosition = 0;
+    [SerializeField, NonSerialized] private MapInfoScriptableObject myMapPositionData;
 
     private bool activeateFlg = false; // 初期化フラグ
 
 
     // 初期化を行うクラス(一回のみ実行可能)
-    public void StatusActiveate(int maney, int ID, int doubtCount, string name)
+    public void StatusActiveate(int money, int ID, int doubtCount, string name, MapInfoScriptableObject defaultPosition)
     {
         if (activeateFlg)
         {
             Debug.Log("このステータスは既に初期化されています");
             return;
         }
-        maneyData = maney;
+        moneyData = money;
         this.ID = ID;
         doubtCountData = doubtCount;
         nameData = name;
         actionData = true;
-        debugPosition = 0;
         activeateFlg = true;
+        myMapPosition = defaultPosition;
     }
 
     #region getプロパティ
@@ -51,10 +51,10 @@ public class PlayerStatus : MonoBehaviour
     // getプロパティはこの関数を呼び出すことで対応した変数を取得することができます
     // ただし、getのみの記述となるので変数の書き換えは下記セッターを使用してください
 
-    public int maney
+    public int money
     {
-        get => maneyData;
-        private set => maney = value;
+        get => moneyData;
+        private set => moneyData = value;
     }
     public int id
     {
@@ -86,10 +86,11 @@ public class PlayerStatus : MonoBehaviour
         get => doubtData;
         private set => doubtData = value;
     }
-    public int position
+
+    public MapInfoScriptableObject myMapPosition
     {
-        get => debugPosition;
-        private set => debugPosition = value;
+        get => myMapPositionData;
+        private set => myMapPositionData = value;
     }
     #endregion
 
@@ -99,9 +100,9 @@ public class PlayerStatus : MonoBehaviour
     // ただし、一部変数は追加するものだけの物も存在するので、注意してください
     // 追加するだけのものは Add が先頭につき、完全に変更できるものは Set が先頭についています
 
-    public void AddManey(int addAmount)
+    public void AddMoney(int addAmount)
     {
-        maneyData += addAmount;
+        moneyData += addAmount;
     }
 
     public void SetID(int newID)
@@ -141,9 +142,9 @@ public class PlayerStatus : MonoBehaviour
         actionData = newAction;
     }
 
-    public void AddPosition(int addAmount)
+    public void SetMap(MapInfoScriptableObject newMap)
     {
-        debugPosition += addAmount;
+        myMapPositionData = newMap;
     }
     #endregion
 }

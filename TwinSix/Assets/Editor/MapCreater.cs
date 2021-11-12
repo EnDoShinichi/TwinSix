@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class MapCreater : EditorWindow
 {
-    const int MAX_NEXTCOUNT = 10;
+    const int MAX_MAPCOUNT = 10;
 
     [MenuItem("Window/MapCreater")]
     static void WindowOpen()
@@ -20,11 +20,12 @@ public class MapCreater : EditorWindow
 
     string mapName = "new mapName...";
     Vector3 mapPosition = Vector3.zero;
-    EventType eventType = EventType.NONE;
+    EventBase eventType = null;
     List<MapInfoScriptableObject> next = new List<MapInfoScriptableObject>();
-    MapInfoScriptableObject before = null;
+    List<MapInfoScriptableObject> before = new List<MapInfoScriptableObject>();
 
     int nextMapCount = 1;
+    int beforeMapCount = 1;
     private void OnGUI()
     {
         if (instance)
@@ -36,14 +37,14 @@ public class MapCreater : EditorWindow
 
         mapName = EditorGUILayout.TextField("マップの名称", mapName);
         mapPosition = EditorGUILayout.Vector3Field("作成対象のtransform.position", mapPosition);
-        eventType = (EventType)EditorGUILayout.EnumPopup("作成マスのイベント", eventType);
+        eventType = EditorGUILayout.ObjectField("作成マップのイベント", eventType, typeof(EventBase), true) as EventBase;
 
-        nextMapCount = EditorGUILayout.IntField("次回移動先に設定されるマップデータ数", nextMapCount);
+        nextMapCount = EditorGUILayout.IntField("次回移動先のマップデータ数", nextMapCount);
 
-        if (nextMapCount > MAX_NEXTCOUNT)
+        if (nextMapCount > MAX_MAPCOUNT)
         {
-            Debug.Log("次回移動先データ数を" + MAX_NEXTCOUNT + "を超える値に設定することはできません(過剰な値の設定防止のため)");
-            nextMapCount = MAX_NEXTCOUNT;
+            Debug.Log("次回移動先データ数を" + MAX_MAPCOUNT + "を超える値に設定することはできません(過剰な値の設定防止のため)");
+            nextMapCount = MAX_MAPCOUNT;
         }
 
         if (nextMapCount < 0)
@@ -52,7 +53,7 @@ public class MapCreater : EditorWindow
             nextMapCount = 0;
         }
 
-        if (nextMapCount >= next.Count && nextMapCount <= MAX_NEXTCOUNT)
+        if (nextMapCount >= next.Count && nextMapCount <= MAX_MAPCOUNT)
         {
             for (int i = next.Count; i < nextMapCount; i++)
             {
@@ -72,13 +73,39 @@ public class MapCreater : EditorWindow
             next[i] = EditorGUILayout.ObjectField("次のマップ情報", next[i], typeof(MapInfoScriptableObject), true) as MapInfoScriptableObject;
         }
 
-        before = EditorGUILayout.ObjectField("一個前のマップ情報", before, typeof(MapInfoScriptableObject), true) as MapInfoScriptableObject;
+        beforeMapCount = EditorGUILayout.IntField("前回移動先のマップデータ数",beforeMapCount);
 
-        scriptableObject.mapName = mapName;
-        scriptableObject.mapPosition = mapPosition;
-        scriptableObject.type = eventType;
-        scriptableObject.nextMap = next.ToArray();
-        scriptableObject.beforeMap = before;
+        if (beforeMapCount > MAX_MAPCOUNT)
+        {
+            Debug.Log("前回移動先データ数を" + MAX_MAPCOUNT + "を超える値に設定することはできません(過剰な値の設定防止のため)");
+            beforeMapCount = MAX_MAPCOUNT;
+        }
+
+        if (nextMapCount < 0)
+        {
+            Debug.Log("前回移動先データ数に0を下回る値が設定されました　0に置き換えられます");
+            beforeMapCount = 0;
+        }
+
+        if (beforeMapCount >= before.Count && beforeMapCount <= MAX_MAPCOUNT)
+        {
+            for (int i = before.Count; i < beforeMapCount; i++)
+            {
+                before.Add(null);
+            }
+        }
+        else if (beforeMapCount < before.Count && beforeMapCount > 0)
+        {
+            for (int i = before.Count - 1; i > beforeMapCount; i--)
+            {
+                before.RemoveAt(i);
+            }
+        }
+
+        for (int i = 0;i < beforeMapCount;i++)
+        {
+            before[i] = EditorGUILayout.ObjectField($"{i + 1}:", before[i], typeof(MapInfoScriptableObject), true) as MapInfoScriptableObject;
+        }
 
         if (GUILayout.Button("データ保存"))
         {
@@ -98,12 +125,16 @@ public class MapCreater : EditorWindow
 
         mapName = "new mapName...";
         mapPosition = Vector3.zero;
-        eventType = EventType.NONE;
-        before = null;
+        eventType = null;
 
         for (int i = 0; i < next.Count; i++)
         {
             next[i] = null;
+        }
+
+        for (int i = 0;i < before.Count; i++)
+        {
+            before[i] = null;
         }
 
         instance = false;
@@ -111,6 +142,7 @@ public class MapCreater : EditorWindow
 
     void SaveData()
     {
+        scriptableObject.ActivateScriptableObject(mapName, mapPosition, eventType, next.ToArray(), before.ToArray());
         const string PATH = "Assets/CreateData/";
         string name = assetName + ".asset";
         var asset = AssetDatabase.LoadAssetAtPath(PATH + name, typeof(MapInfoScriptableObject));
