@@ -3,22 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndPhase : MonoBehaviour,IPhase
+namespace TwinSix
 {
-    public event Action NextPhase;
-
-    public void PhaseEnd()
+    public class EndPhase : MonoBehaviour, IPhase
     {
-        throw new NotImplementedException();
-    }
+        //PlayerStatus playerStatus; // 現在のプレイヤーステータス
+        public event Action NextPhase; // 次のフェーズへの移行関数
 
-    public void PhaseStart(PlayerStatus turnObject)
-    {
-        throw new NotImplementedException();
-    }
+        public void PhaseEnd()
+        {
+            Debug.Log("EndPhase_End");
+            // 次のプレイヤーに移行 & 次のターンへ
+            GameStatus.lockMenber.PlayingNumberOrder();
+            NextPhase(); // 次のフェーズへ移行
+        }
 
-    public void PhaseUpdate()
-    {
-        throw new NotImplementedException();
+        public void PhaseStart(PlayerStatus turnObject)
+        {
+            Debug.Log("EndPhase_Start");
+            turnObject.SetDice(0);
+            turnObject.SetDoubt(false);
+            turnObject.SetDoubtDice(0);
+        }
+
+        public void PhaseUpdate()
+        {
+
+        }
     }
 }
