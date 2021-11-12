@@ -9,16 +9,16 @@ public class MovePhase : MonoBehaviour,IPhase
 
     public void PhaseEnd()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void PhaseStart(PlayerStatus turnObject)
     {
-        throw new NotImplementedException();
+        
     }
 
     public void PhaseUpdate()
     {
-        throw new NotImplementedException();
+        
     }
 }
