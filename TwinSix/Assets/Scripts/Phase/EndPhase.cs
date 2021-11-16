@@ -21,14 +21,21 @@ namespace TwinSix
         public void PhaseStart(PlayerStatus turnObject)
         {
             Debug.Log("EndPhase_Start");
-            turnObject.SetDice(0);
-            turnObject.SetDoubt(false);
-            turnObject.SetDoubtDice(0);
+            turnObject.SetDice(0);      // ダイスの目を初期化
+            turnObject.SetDoubt(false); // ダウトフラグ初期化
+            turnObject.SetDoubtDice(0); // 申告したダイスの目を初期化
+            StartCoroutine(NextTurnCorutine()); // 暫くしてから次のターンへ
         }
 
         public void PhaseUpdate()
         {
 
+        }
+        private IEnumerator NextTurnCorutine()
+        {
+            // 少し待機
+            yield return new WaitForSeconds(GameStatus.THINKING_TIME);
+            PhaseEnd();
         }
     }
 }

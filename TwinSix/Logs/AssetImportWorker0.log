@@ -15,11 +15,11 @@ C:/Users/user/Documents/TwinSix/TwinSix
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60733
+52052
 Successfully changed project path to: C:/Users/user/Documents/TwinSix/TwinSix
 C:/Users/user/Documents/TwinSix/TwinSix
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 38.67 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 33.08 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.12f1 (b3b2c6512326)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Resources/UnitySubsystems
@@ -35,37 +35,37 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56960
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56848
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002067 seconds.
+Registered in 0.005407 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 45.59 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 51.10 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.493 seconds
+- Completed reload, in  1.869 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006627 seconds.
+Registered in 0.006714 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.61 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.535 seconds
+- Completed reload, in  1.739 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.38 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.34 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1406 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1405 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 67.7 MB.
 System memory in use after: 67.8 MB.
 
-Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 1841.
-Total: 3.057800 ms (FindLiveObjects: 0.231600 ms CreateObjectMapping: 0.078200 ms MarkObjects: 2.635900 ms  DeleteObjects: 0.110700 ms)
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 1840.
+Total: 2.039300 ms (FindLiveObjects: 0.188300 ms CreateObjectMapping: 0.052100 ms MarkObjects: 1.720500 ms  DeleteObjects: 0.076600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -79,154 +79,30 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/Kawashima/EndPhase_Kawashima.cs
-  artifactKey: Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Kawashima/EndPhase_Kawashima.cs using Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fe480379a86c1b07e54281a22d79aaf') in 0.043028 seconds 
-  Import took 0.046826 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 14.616420 seconds.
-  path: Assets/Scripts/Phase/MovePhase.cs
-  artifactKey: Guid(67d6d0d97b401be419bacdbcb29926c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Phase/MovePhase.cs using Guid(67d6d0d97b401be419bacdbcb29926c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26ac76150301175c2b12e68b298ed507') in 0.023500 seconds 
-  Import took 0.032523 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.016752 seconds.
-  path: Assets/Scripts/Phase/MovePhase.cs
-  artifactKey: Guid(67d6d0d97b401be419bacdbcb29926c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Phase/MovePhase.cs using Guid(67d6d0d97b401be419bacdbcb29926c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26ac76150301175c2b12e68b298ed507') in 0.013865 seconds 
-  Import took 0.021576 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.591428 seconds.
-  path: Assets/Scripts/Phase/DoubtPhase.cs
-  artifactKey: Guid(b9fdccd982a75bd4e85988cd629adeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Phase/DoubtPhase.cs using Guid(b9fdccd982a75bd4e85988cd629adeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68efdef98ccada085ac953771c3d2a73') in 0.019502 seconds 
-  Import took 0.023974 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.971631 seconds.
-  path: Assets/Scripts/Phase/DicePhase.cs
-  artifactKey: Guid(39ac043baf429a4428942f1f4356371e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Phase/DicePhase.cs using Guid(39ac043baf429a4428942f1f4356371e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd530f8e96752a9bee4b31e9ab447d848') in 0.008444 seconds 
-  Import took 0.011450 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.004507 seconds.
-  path: Assets/Scripts/Phase/DicePhase.cs
-  artifactKey: Guid(39ac043baf429a4428942f1f4356371e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Phase/DicePhase.cs using Guid(39ac043baf429a4428942f1f4356371e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd530f8e96752a9bee4b31e9ab447d848') in 0.003688 seconds 
-  Import took 0.007330 seconds .
+  path: Assets/Scripts/Phase/EndPhase.cs
+  artifactKey: Guid(6a095c1cc9155fe43ae6d9adc95aca05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Phase/EndPhase.cs using Guid(6a095c1cc9155fe43ae6d9adc95aca05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66c4dad019851ac3dec406909ce9e9dd') in 0.063399 seconds 
+  Import took 0.068785 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004922 seconds.
+Registered in 0.006543 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.110 seconds
+- Completed reload, in  1.097 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.34 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1400 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 67.6 MB.
-System memory in use after: 67.7 MB.
-
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1844.
-Total: 2.168200 ms (FindLiveObjects: 0.149600 ms CreateObjectMapping: 0.042900 ms MarkObjects: 1.958100 ms  DeleteObjects: 0.016700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 421.646763 seconds.
-  path: Assets/Scripts/Kawashima/EndPhase_Kawashima.cs
-  artifactKey: Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Kawashima/EndPhase_Kawashima.cs using Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '103052f884912c76444b59109a41d753') in 0.006186 seconds 
-  Import took 0.017032 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003966 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.33 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.132 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1400 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 67.6 MB.
-System memory in use after: 67.7 MB.
-
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1847.
-Total: 2.057000 ms (FindLiveObjects: 0.148800 ms CreateObjectMapping: 0.039500 ms MarkObjects: 1.848700 ms  DeleteObjects: 0.018600 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 662.965823 seconds.
-  path: Assets/Scripts/Kawashima/EndPhase_Kawashima.cs
-  artifactKey: Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Kawashima/EndPhase_Kawashima.cs using Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76823ea5ccc5eff3220e3538469a0217') in 0.005249 seconds 
-  Import took 0.016165 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.020157 seconds.
-  path: Assets/Scripts/Kawashima/EndPhase_Kawashima.cs
-  artifactKey: Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Kawashima/EndPhase_Kawashima.cs using Guid(0e3ae1a973ca2be4da4011a1762d7095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76823ea5ccc5eff3220e3538469a0217') in 0.003875 seconds 
-  Import took 0.006924 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004179 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.34 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.084 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.33 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.39 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1399 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 67.6 MB.
-System memory in use after: 67.7 MB.
+System memory in use before: 67.5 MB.
+System memory in use after: 67.6 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1849.
-Total: 2.427900 ms (FindLiveObjects: 0.135800 ms CreateObjectMapping: 0.042200 ms MarkObjects: 2.185900 ms  DeleteObjects: 0.062700 ms)
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1843.
+Total: 2.226700 ms (FindLiveObjects: 0.170700 ms CreateObjectMapping: 0.041200 ms MarkObjects: 1.996000 ms  DeleteObjects: 0.017700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -240,48 +116,74 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 196.832976 seconds.
-  path: Assets/Scripts/Kawashima
-  artifactKey: Guid(c16aa3e59663834429b425ff2509d826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Kawashima using Guid(c16aa3e59663834429b425ff2509d826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b91a4bc23d81c56539df98f68e09dd5') in 0.010093 seconds 
-  Import took 0.014522 seconds .
+  Time since last request: 914.157319 seconds.
+  path: Assets/Scripts/Phase/EndPhase.cs
+  artifactKey: Guid(6a095c1cc9155fe43ae6d9adc95aca05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Phase/EndPhase.cs using Guid(6a095c1cc9155fe43ae6d9adc95aca05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb3404439c6e8115e8cc0baf2c07e5b1') in 0.005009 seconds 
+  Import took 0.009140 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.003861 seconds.
-  path: Assets/Scripts/Kawashima
-  artifactKey: Guid(c16aa3e59663834429b425ff2509d826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Kawashima using Guid(c16aa3e59663834429b425ff2509d826) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b91a4bc23d81c56539df98f68e09dd5') in 0.004455 seconds 
-  Import took 0.009705 seconds .
+  Time since last request: 12.317028 seconds.
+  path: Assets/Scenes
+  artifactKey: Guid(c0a7993a8a0e4e545b99f82d8feb4f4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes using Guid(c0a7993a8a0e4e545b99f82d8feb4f4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eedd8007dda796d14b03ecf188e847ed') in 0.013626 seconds 
+  Import took 0.019266 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005700 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.34 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.068 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.33 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1399 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 67.6 MB.
-System memory in use after: 67.7 MB.
+Received Import Request.
+  Time since last request: 12.313758 seconds.
+  path: Assets/Scenes/HiroScene.unity
+  artifactKey: Guid(edc53c5ed897b314aa3d3dad560a00ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/HiroScene.unity using Guid(edc53c5ed897b314aa3d3dad560a00ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b64c175e8483f904820698a4643d2768') in 0.024491 seconds 
+  Import took 0.027967 seconds .
 
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 1852.
-Total: 2.106700 ms (FindLiveObjects: 0.170600 ms CreateObjectMapping: 0.045900 ms MarkObjects: 1.871200 ms  DeleteObjects: 0.018000 ms)
+========================================================================
+Received Import Request.
+  Time since last request: 43.101773 seconds.
+  path: Assets/Prefab
+  artifactKey: Guid(9ecae0c1150663f40a64c8f501d9b755) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefab using Guid(9ecae0c1150663f40a64c8f501d9b755) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '051bfbc099a26fe7149358046779d252') in 0.013623 seconds 
+  Import took 0.025418 seconds .
 
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 3.024010 seconds.
+  path: Assets/Scenes/KatoScene.unity
+  artifactKey: Guid(b074abad1ec4c9845bbf227a90e56e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/KatoScene.unity using Guid(b074abad1ec4c9845bbf227a90e56e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef44e2018467e6a06e17ce9f87b01352') in 0.014136 seconds 
+  Import took 0.017980 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 27.533122 seconds.
+  path: Assets/Scenes/TakaoScene.unity
+  artifactKey: Guid(65db78c699e59bc4bac9958916a491e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/TakaoScene.unity using Guid(65db78c699e59bc4bac9958916a491e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b15402b9b0438e34ea8efa98f8702bd') in 0.015299 seconds 
+  Import took 0.018714 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.841869 seconds.
+  path: Assets/Scenes/KawashimaScene.unity
+  artifactKey: Guid(43221c08b14dd7a4182901b17df50fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/KawashimaScene.unity using Guid(43221c08b14dd7a4182901b17df50fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3449b391f5d454921953f2575d57a09b') in 0.013927 seconds 
+  Import took 0.017521 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.674520 seconds.
+  path: Assets/Scenes/KaedeScene.unity
+  artifactKey: Guid(552c962a45257044d87b9c3d68d0aa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/KaedeScene.unity using Guid(552c962a45257044d87b9c3d68d0aa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27dbca63edca33657735dbc72607ddb0') in 0.015350 seconds 
+  Import took 0.027031 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.694652 seconds.
+  path: Assets/Scenes/ShimizuScene.unity
+  artifactKey: Guid(959b84f701de942429d094073f70aa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/ShimizuScene.unity using Guid(959b84f701de942429d094073f70aa76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5a5bf7eacd518a5194c3380a0b23bf7') in 0.020874 seconds 
+  Import took 0.024119 seconds .
+
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
