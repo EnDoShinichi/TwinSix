@@ -7,6 +7,7 @@ namespace TwinSix
 {
     public class EndPhase : MonoBehaviour, IPhase
     {
+        private const float NEXT_TURN_WAIT = 1f; // 次のターンへの移行時間
         //PlayerStatus playerStatus; // 現在のプレイヤーステータス
         public event Action NextPhase; // 次のフェーズへの移行関数
 
@@ -14,7 +15,7 @@ namespace TwinSix
         {
             Debug.Log("EndPhase_End");
             // 次のプレイヤーに移行 & 次のターンへ
-            GameStatus.lockMenber.PlayingNumberOrder();
+            //GameStatus.lockMenber.PlayingNumberOrder();
             NextPhase(); // 次のフェーズへ移行
         }
 
@@ -34,7 +35,7 @@ namespace TwinSix
         private IEnumerator NextTurnCorutine()
         {
             // 少し待機
-            yield return new WaitForSeconds(GameStatus.THINKING_TIME);
+            yield return new WaitForSeconds(NEXT_TURN_WAIT);
             PhaseEnd();
         }
     }
