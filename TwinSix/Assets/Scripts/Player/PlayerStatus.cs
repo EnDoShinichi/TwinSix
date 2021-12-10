@@ -7,24 +7,25 @@ using System;
 public class PlayerStatus : MonoBehaviour
 {
     // 前回のPlayerStatusと異なり実体を持つPlayerStatus シリアライズ化されている
+    [SerializeField,HideInInspector] private GameObject playerObject;
 
-    [SerializeField, NonSerialized] private int moneyData = 10000;
+    [SerializeField, HideInInspector] private int moneyData = 10000;
 
-    [SerializeField, NonSerialized] private int ID = -1;
+    [SerializeField, HideInInspector] private int ID = -1;
 
-    [SerializeField, NonSerialized] private int diceData = 0;
+    [SerializeField, HideInInspector] private int diceData = 0;
 
-    [SerializeField, NonSerialized] private int doubtDiceData = 0;
+    [SerializeField, HideInInspector] private int doubtDiceData = 0;
 
-    [SerializeField, NonSerialized] private int doubtCountData = 0;
+    [SerializeField, HideInInspector] private int doubtCountData = 0;
 
-    [SerializeField, NonSerialized] private string nameData = "nonPlayer";
+    [SerializeField, HideInInspector] private string nameData = "nonPlayer";
 
-    [SerializeField, NonSerialized] private bool doubtData = false;
+    [SerializeField, HideInInspector] private bool doubtData = false;
 
-    [SerializeField, NonSerialized] private bool actionData = true;
+    [SerializeField, HideInInspector] private bool actionData = true;
 
-    [SerializeField, NonSerialized] private MapInfoScriptableObject myMapPositionData;
+    [SerializeField, HideInInspector] private MapInfoScriptableObject myMapPositionData;
 
     private bool activeateFlg = false; // 初期化フラグ
 
@@ -50,6 +51,12 @@ public class PlayerStatus : MonoBehaviour
 
     // getプロパティはこの関数を呼び出すことで対応した変数を取得することができます
     // ただし、getのみの記述となるので変数の書き換えは下記セッターを使用してください
+
+    public GameObject Object
+    {
+        get => playerObject;
+        private set => playerObject = value;
+    }
 
     public int money
     {
@@ -99,6 +106,12 @@ public class PlayerStatus : MonoBehaviour
     // セッターは対応した変数に対しての書換えが実行できます
     // ただし、一部変数は追加するものだけの物も存在するので、注意してください
     // 追加するだけのものは Add が先頭につき、完全に変更できるものは Set が先頭についています
+
+    public void SetGameObject(GameObject newObject)
+    {
+        if (playerObject == null) playerObject = newObject;
+        else Debug.LogError("もうすでに値が設定されています");
+    }
 
     public void AddMoney(int addAmount)
     {

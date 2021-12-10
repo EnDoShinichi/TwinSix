@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 065068d10ad1b3c498d1fdbbb07ffff9, type: 3}
-  m_Name: testData
+  m_Name: abcde
   m_EditorClassIdentifier: 
-  mapNameData: abc
-  mapPositionData: {x: 3, y: 3, z: 3}
-  mapEventData: {fileID: 8919604537074913842, guid: 1bfcfa370b3077f4b80675a080c2a1df, type: 3}
-  nextMapData:
-  - {fileID: 11400000, guid: cf166633233d8b94697ce26b1e5bc0de, type: 2}
-  beforeMapData:
-  - {fileID: 11400000}
+  mapNameData: test
+  mapPositionData: {x: 1, y: 1, z: 1}
+  mapEventData: {fileID: 0}
+  nextMapData: []
+  beforeMapData: []
