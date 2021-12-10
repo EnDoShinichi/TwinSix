@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &439571683882682886
 Transform:
   m_ObjectHideFlags: 0
@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phaseseObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  synchonizeObject: {fileID: 0}
-  basedata: {fileID: 0}
+  - {fileID: 7096363361729558885, guid: b1bc4308c72c00442ad0e3da79e6a841, type: 3}
+  - {fileID: 7146570616484571835, guid: e504217aa6bce334b93b713140a1dc5f, type: 3}
+  - {fileID: 6173860555634992959, guid: f66600d86aca6f74982dd777a4aa3fac, type: 3}
+  - {fileID: 3133754453911777543, guid: aa1bfaf66ccce3b48a6600999df657f8, type: 3}
+  - {fileID: 3192647671490553061, guid: e5e0d9c620c6d07409e33e2ece728e50, type: 3}
+  resultObject: {fileID: 2090513958250084561, guid: f8b4c4409d65d824c8d961cb28f9d96c, type: 3}
+  synchonizeObject: {fileID: 3409163578321445968, guid: 22382fc08ea166542bf495d63e578e72, type: 3}
