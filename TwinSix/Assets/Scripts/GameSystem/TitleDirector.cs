@@ -34,6 +34,6 @@ public class TitleDirector : MonoBehaviour
         GameStatus.lockMenber.statusSeter = playerStatus;
         inputFlg = true;
         // ƒV[ƒ“•ÏˆÚ
-        //SceneManager
+        SceneManager.LoadScene(nextScene);
     }
 }
