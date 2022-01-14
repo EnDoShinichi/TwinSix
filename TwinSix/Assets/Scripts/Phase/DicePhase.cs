@@ -7,16 +7,37 @@ namespace TwinSix
 {
     public class DicePhase : MonoBehaviour, IPhase
     {
+        [SerializeField] DiceRoll dice;
+        [SerializeField] PlayerStatus player;
         [SerializeField] private GameObject buttonObject; // ボタン格納オブジェクト
         [SerializeField] private GameObject numberButtonObject; // true,falseを表示したのち、どの番号の実行するかのボタンが格納されたオブジェクト
 
         PlayerStatus thisTurnstatus; // このターンのプレイヤーステータス
+        DiceRoll diceRoll;
 
         int setDoubtNumber = 1; // 嘘の値を保存しておく変数
+        int diceEyeNum = 0;
         bool CountTime = true; // カウントコルーチンが実行されているかどうか
 
         public event Action NextPhase; // 次のフェーズへ移行する関数
+        int money = 0;
+        int ID = 0;
+        int doubtCount = 0;
+        string name = "";
+        MapInfoScriptableObject defaultPosition;
+        PlayerStatus status;
 
+        private void Start()
+        {
+            diceRoll = dice.GetComponent<DiceRoll>();
+            player.StatusActiveate(money, ID, doubtCount, name, defaultPosition);
+            PhaseStart(status);
+        }
+
+        private void Update()
+        {
+            PhaseUpdate();
+        }
         public void PhaseEnd()
         {
             Debug.Log("dicePhase_End");
@@ -33,29 +54,24 @@ namespace TwinSix
         public void PhaseStart(PlayerStatus status)
         {
             Debug.Log("dicePhase" + GameStatus.lockMenber.playingNumber);
-            CountTime = true; // フラグをtrueに戻す
             setDoubtNumber = -1; // 値を入力されていない状態に
             thisTurnstatus = status; // プレイヤーステータスを更新
         }
 
         public void PhaseUpdate()
         {
-            if (CountTime) // まだカウントコルーチンが実行されていないなら
-            {
-                int rand = UnityEngine.Random.Range(1, 7); // ランダムな値を生成
-                thisTurnstatus.SetDice(rand); // このターンのダイスの値に設定
+            if (diceRoll.GetDiceEyes() == 0) return;
 
-                if (thisTurnstatus.id == GameStatus.lockMenber.myNumber) buttonObject.SetActive(true); // 今回のプレイヤーが自身のステータスと合致しているならボタンオブジェクトを表示
-                else // そうでない場合(他キャラ)、嘘をつくかの判定を行ったのち、その状況に応じた値を設定
-                {
-                    int doubtRand = UnityEngine.Random.Range(0, 2);
-                    if (doubtRand == 0)
-                    {
-                        int rand_doubt = UnityEngine.Random.Range(1, 7);
-                        setDoubtNumber = rand_doubt;
-                        thisTurnstatus.SetDoubt(true);
-                    }
-                }
+            Debug.Log("PhaseStart");
+            //int rand = UnityEngine.Random.Range(1, 7); // ランダムな値を生成
+            diceEyeNum = diceRoll.GetDiceEyes();
+            Debug.Log("aaaa" + diceRoll.GetDiceEyes());
+            player.SetDice(diceEyeNum); // このターンのダイスの値に設定
+
+            //if (player.id == GameStatus.lockMenber.myNumber) buttonObject.SetActive(true); 
+            if (diceEyeNum == 0)
+            {
+                Debug.Log("目が決まりました");
                 StartCoroutine(Count()); // カウントコルーチン実行
             }
         }
