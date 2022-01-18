@@ -16,6 +16,6 @@ MonoBehaviour:
   mapPositionData: {x: 1, y: 1, z: 1}
   mapEventData: {fileID: 8328670215694624117, guid: fb7d78f3b1e34bf4d95309ac970856fd, type: 3}
   nextMapData:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 18d0be4c05ab79b4aaf681aa982b2a49, type: 2}
   beforeMapData:
   - {fileID: 11400000, guid: 18d0be4c05ab79b4aaf681aa982b2a49, type: 2}

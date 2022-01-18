@@ -18,4 +18,4 @@ MonoBehaviour:
   nextMapData:
   - {fileID: 11400000, guid: cf166633233d8b94697ce26b1e5bc0de, type: 2}
   beforeMapData:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: cf166633233d8b94697ce26b1e5bc0de, type: 2}
