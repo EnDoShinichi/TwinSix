@@ -375,6 +375,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6173860555634992944, guid: f66600d86aca6f74982dd777a4aa3fac, type: 3}
+      propertyPath: waitTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6173860555634992944, guid: f66600d86aca6f74982dd777a4aa3fac, type: 3}
+      propertyPath: playerMap
+      value: 
+      objectReference: {fileID: 11400000, guid: 18d0be4c05ab79b4aaf681aa982b2a49, type: 2}
+    - target: {fileID: 6173860555634992944, guid: f66600d86aca6f74982dd777a4aa3fac, type: 3}
       propertyPath: playerTest
       value: 
       objectReference: {fileID: 0}
