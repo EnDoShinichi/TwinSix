@@ -9,12 +9,16 @@ public class EventPhase : MonoBehaviour,IPhase
 {
     public event Action NextPhase;
 
+    [SerializeField] private AudioSource moneySouce;
+    [SerializeField] private AudioClip moneySE;
+
     PhotonView view;
     bool startFlg;
     private void Start()
     {
         view = GetComponent<PhotonView>();
         startFlg = false;
+        moneySouce = GetComponent<AudioSource>();
     }
 
     [PunRPC]
@@ -38,6 +42,11 @@ public class EventPhase : MonoBehaviour,IPhase
             view.RPC(nameof(PhaseCompleatesynchronize), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
         }
         GameStatus.lockMenber.TargetListBind_Player(turnObject);
+        if (turnObject.myMapPosition.mapEventData.EventTypeGet() == EventType.MONEY)
+        {
+            Debug.Log("MoneySEÇ»Ç¡ÇƒÇ‹ÇüÇüÇüÇüÇ∑ÅI");
+            moneySouce.PlayOneShot(moneySE);
+        }
         turnObject.myMapPosition.mapEventData.MapEvent();
         startFlg = true;
         StartCoroutine(stop());

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
-    guid: b66bb673b1930944ea428d737c6ec3ab
+    path: Assets/Scenes/TitleScene2.unity
+    guid: 42695e4910942924a9365f75f4271d41
   - enabled: 1
     path: Assets/Scenes/ShimizuScene.unity
     guid: 959b84f701de942429d094073f70aa76

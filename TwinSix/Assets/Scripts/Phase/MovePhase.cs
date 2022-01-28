@@ -12,6 +12,8 @@ public class MovePhase : MonoBehaviour,IPhase
 
     [SerializeField] private float waitTime;
     [SerializeField] private MapInfoScriptableObject playerMap;
+    [SerializeField] private AudioSource moveSource;
+    [SerializeField] private AudioClip moveSE;
 
     private bool choiceFlg;
     PhotonView view;
@@ -34,6 +36,7 @@ public class MovePhase : MonoBehaviour,IPhase
 
         //PhaseStart(playerStatus);
         view = GetComponent<PhotonView>();
+        moveSource = GetComponent<AudioSource>();
         startFlg = false;
     }
 
@@ -77,6 +80,8 @@ public class MovePhase : MonoBehaviour,IPhase
 
             ChoiceRoad();
 
+            moveSource.PlayOneShot(moveSE);
+
             if (choiceFlg == true) break;
 
             if (playerStatus.myMapPosition.mapEventData.EventTypeGet() == EventType.STAND) break;
@@ -106,6 +111,8 @@ public class MovePhase : MonoBehaviour,IPhase
             //playerStatus.SetMap(playerStatus.myMapPosition.nextMapData[0]);
 
             ChoiceRoad();
+
+            moveSource.PlayOneShot(moveSE);
 
             if (choiceFlg == true) break;
             

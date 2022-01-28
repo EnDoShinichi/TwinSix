@@ -6,6 +6,10 @@ using System;
 [Serializable]
 public class DiceRoll : MonoBehaviour
 {
+
+    [SerializeField] private AudioSource dicesource;
+    [SerializeField] private AudioClip diceSE;
+
     private Rigidbody rigidbody;
     private bool rollFlg = false;
     private bool stopFlg = true;
@@ -20,6 +24,7 @@ public class DiceRoll : MonoBehaviour
         rollOn = false;
         initVec = transform.position;
         rigidbody = GetComponent<Rigidbody>();
+        dicesource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -125,6 +130,7 @@ public class DiceRoll : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            dicesource.PlayOneShot(diceSE);
             rigidbody.isKinematic = false;
         }
     }

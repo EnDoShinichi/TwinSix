@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69042841ada309f46b32eee9f4c54992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: TitleScene
+  sceneName: TitleScene2
   topPlayerText: {fileID: 561879469}
   playersText: {fileID: 1933138737}
 --- !u!4 &1516114307

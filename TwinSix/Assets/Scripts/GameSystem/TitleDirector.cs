@@ -42,6 +42,7 @@ public class TitleDirector : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.NickName = nameField.text;
         inputFlg = true;
+        Debug.Log("room");
     }
     // マスターサーバーへの接続が成功した時に呼ばれるコールバック
     public override void OnConnectedToMaster()

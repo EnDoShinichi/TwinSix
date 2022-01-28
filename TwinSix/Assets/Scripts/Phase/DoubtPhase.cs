@@ -23,11 +23,15 @@ public class DoubtPhase : MonoBehaviour,IPhase
     bool check;
     bool startFlg;
 
+    [SerializeField] private AudioSource doubtsource;
+    [SerializeField] private AudioClip doubtSE;
+
     PhotonView view;
     private void Start()
     {
         startFlg = false;
         view = GetComponent<PhotonView>();
+        doubtsource = GetComponent<AudioSource>();
     }
 
     [PunRPC]
@@ -112,7 +116,11 @@ public class DoubtPhase : MonoBehaviour,IPhase
                         status.AddMoney((status.money / 2) * -1);
                         GameStatus.lockMenber.DrawMessage("お見事！ウソを見破った!");
                     }
-                    else GameStatus.lockMenber.DrawMessage("残念!ウソをついていなかった...");
+                    else
+                    {
+                        doubtsource.PlayOneShot(doubtSE);
+                        GameStatus.lockMenber.DrawMessage("残念!ウソをついていなかった...");
+                    }
 
                     StartCoroutine(stop());
                     state = Doubt_State.END;

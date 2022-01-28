@@ -18,6 +18,7 @@ namespace TwinSix
             LENGTH
         }
 
+
         [SerializeField] DiceRoll dice;
         [SerializeField] PlayerStatus player;
         [SerializeField] private GameObject buttonObject; // ボタン格納オブジェクト
@@ -117,6 +118,7 @@ namespace TwinSix
                     // if (diceEyeNum == 0)
                     {
                         Debug.Log("目が決まりました");
+
                         // StartCoroutine(Count()); // カウントコルーチン実行
                         diceRoll.DiceReset();
                         state = Dice_State.DOUBTCHECK;
