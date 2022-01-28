@@ -15,4 +15,6 @@ interface IPhase // フェーズの基本的な関数
     void PhaseUpdate(); // フェーズ中常に呼び出される処理
     /// <summary>フェーズの終了時に呼び出される処理</summary>
     void PhaseEnd(); // フェーズの終了時に呼び出される処理
+    /// <summary> </summary>
+    void PhaseCompleatesynchronize(int number);
 }

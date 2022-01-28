@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class MovePhase : MonoBehaviour,IPhase
 {
@@ -12,44 +14,55 @@ public class MovePhase : MonoBehaviour,IPhase
     [SerializeField] private MapInfoScriptableObject playerMap;
 
     private bool choiceFlg;
-
-    /*private void Start()
+    PhotonView view;
+    bool startFlg;
+    private void Start()
     {
         //システムのランダムとUnityが競合した
-        int random = UnityEngine.Random.Range(1, 6);
-        int random1 = UnityEngine.Random.Range(1, 6);
-        playerStatus.SetDice(3);
-        playerStatus.SetDoubtDice(4);
-        playerStatus.SetDoubt(false);
+        //int random = UnityEngine.Random.Range(1, 6);
+        //int random1 = UnityEngine.Random.Range(1, 6);
+        //playerStatus.SetDice(3);
+        //playerStatus.SetDoubtDice(4);
+        //playerStatus.SetDoubt(false);
 
-        playerStatus.SetMap(playerMap);
+        //playerStatus.SetMap(playerMap);
 
-        Debug.Log($"真({playerStatus.dice})");
-        Debug.Log($"偽({playerStatus.doubtDice})");
+        //Debug.Log($"真({playerStatus.dice})");
+        //Debug.Log($"偽({playerStatus.doubtDice})");
         //Debug.Log(playerStatus.doubt);
         //Debug.Log(playerStatus.myMapPosition.nextMapData.Length);
 
-        PhaseStart(playerStatus);
-    }*/
+        //PhaseStart(playerStatus);
+        view = GetComponent<PhotonView>();
+        startFlg = false;
+    }
 
+    [PunRPC]
     public void PhaseEnd()
     {
         
     }
 
+    [PunRPC]
     public void PhaseStart(PlayerStatus turnObject)
     {
+        if (PhotonNetwork.LocalPlayer.ActorNumber - 1 != turnObject.id) view.RPC(nameof(PhaseCompleatesynchronize), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
+        // if (GameStatus.lockMenber.IsCompleate(PhotonNetwork.LocalPlayer.ActorNumber - 1)) return;
         playerStatus = turnObject;
 
         if (playerStatus.doubt) StartCoroutine(PlayerSetMapDoubt());
         else StartCoroutine(PlayerSetMapTruth());
-
-        
     }
 
+    [PunRPC]
     public void PhaseUpdate()
     {
-        
+        if (!startFlg) return;
+        if (GameStatus.lockMenber.CompleateCheck() && PhotonNetwork.IsMasterClient)
+        {
+            startFlg = false;
+            NextPhase();
+        }
     }
 
     /// <summary>
@@ -70,11 +83,14 @@ public class MovePhase : MonoBehaviour,IPhase
 
             yield return new WaitForSeconds(waitTime);
 
-            //Debug.Log("asd");
+            playerStatus.Object.transform.position = playerStatus.myMapPosition.mapPosition;
+            Debug.Log("asd");
         }
         playerStatus.AddDoubtCount(1);
         choiceFlg = false;
-        NextPhase();
+        view.RPC(nameof(PhaseCompleatesynchronize), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
+
+        startFlg = true;
     }
 
     /// <summary>
@@ -97,10 +113,13 @@ public class MovePhase : MonoBehaviour,IPhase
 
             yield return new WaitForSeconds(waitTime);
 
-            //Debug.Log("fgh");
+            playerStatus.Object.transform.position = playerStatus.myMapPosition.mapPosition;
+            Debug.Log(playerStatus.myMapPosition.mapName);
         }
         choiceFlg = false;
-        NextPhase();
+        view.RPC(nameof(PhaseCompleatesynchronize), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
+
+        startFlg = true;
     }
 
     /// <summary>
@@ -115,5 +134,11 @@ public class MovePhase : MonoBehaviour,IPhase
             // 進行方向を決める処理を追加しないと行けない
         }
         else playerStatus.SetMap(playerStatus.myMapPosition.nextMapData[0]);
+    }
+
+    [PunRPC]
+    public void PhaseCompleatesynchronize(int number)
+    {
+        GameStatus.lockMenber.CompleateScene(number);
     }
 }

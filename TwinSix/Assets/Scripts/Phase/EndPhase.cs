@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 namespace TwinSix
 {
@@ -11,14 +13,21 @@ namespace TwinSix
         //PlayerStatus playerStatus; // 現在のプレイヤーステータス
         public event Action NextPhase; // 次のフェーズへの移行関数
 
+        public void PhaseCompleatesynchronize(int number)
+        {
+            throw new NotImplementedException();
+        }
+
+        [PunRPC]
         public void PhaseEnd()
         {
             Debug.Log("EndPhase_End");
             // 次のプレイヤーに移行 & 次のターンへ
             //GameStatus.lockMenber.PlayingNumberOrder();
-            NextPhase(); // 次のフェーズへ移行
+            // NextPhase(); // 次のフェーズへ移行
         }
 
+        [PunRPC]
         public void PhaseStart(PlayerStatus turnObject)
         {
             Debug.Log("EndPhase_Start");
@@ -28,6 +37,7 @@ namespace TwinSix
             StartCoroutine(NextTurnCorutine()); // 暫くしてから次のターンへ
         }
 
+        [PunRPC]
         public void PhaseUpdate()
         {
 
@@ -36,7 +46,7 @@ namespace TwinSix
         {
             // 少し待機
             yield return new WaitForSeconds(NEXT_TURN_WAIT);
-            PhaseEnd();
+            if (PhotonNetwork.IsMasterClient) NextPhase();
         }
     }
 }

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
 
 enum ThisPhase
 {
@@ -39,6 +42,61 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
         private static List<PlayerStatus> statuses = new List<PlayerStatus>(); // プレイヤーステータスを格納するリスト
 
         private static List<MapInfoScriptableObject> maps = new List<MapInfoScriptableObject>();
+
+        private static List<bool> scene_Compleate = new List<bool>(){false,false,false,false};
+
+        private static Text systemMessage;
+
+        public static void GameInit()
+        {
+            GameTurn = 1;
+            playingNumber = 0;
+            targetPlayerNumber.Clear();
+            targetMapNumber.Clear();
+            statuses.Clear();
+            maps.Clear();
+            scene_Compleate = new List<bool>() { false, false, false, false };
+        }
+
+        public static void CompleateScene(int id)
+        {
+            Debug.Log($"{id}からのシーン終了報告を受けました");
+            scene_Compleate[id] = true;
+        }
+
+        public static bool IsCompleate(int id)
+        {
+            return scene_Compleate[id];
+        }
+
+        public static bool CompleateCheck()
+        {
+            for (int i = 0; i < scene_Compleate.Count;i++)
+            {
+                // Debug.Log($"{i} = {scene_Compleate[i]}");
+                if (!scene_Compleate[i]) return false;
+            }
+
+            Debug.Log("全員からのシーン終了報告を確認しました");
+            return true;
+        }
+
+        public static void CompleateClear()
+        {
+            scene_Compleate = new List<bool>() { false, false, false, false };
+            // scene_Compleate = new List<bool>(MAX_PLAYER_NUMBER);
+            for (int i = 0;i < scene_Compleate.Count;i++)
+            {
+                Debug.Log($"{i}番目");
+                scene_Compleate[i] = false;
+            }
+        }
+
+        public static void DrawMessage(string newMessage)
+        {
+            if (systemMessage == null) systemMessage = GameObject.Find("SystemMessage").GetComponentInChildren<Text>();
+            systemMessage.text = newMessage;
+        }
 
         /// <summary>！！アクセス注意！！　引数のidを元に対応したステータスを返します</summary>
         /// <param name="orderID">受け取りたいキャラクターid</param>
@@ -82,7 +140,6 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
             }
         }
 
-
         public static void MapStatusSeter(List<MapInfoScriptableObject> newMapList)
         {
             maps = newMapList;
@@ -113,6 +170,11 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
 
             if (playingNumber < MAX_PLAYER_NUMBER - 1) playingNumber++;
             else playingNumber = 0;
+
+            for (int i = 0;i < scene_Compleate.Count;i++)
+            {
+                scene_Compleate[i] = false;
+            }
         }
 
         /// <summary> ！！ アクセス注意 ！！ 登録済みのマップ状況を初期状態まで戻します</summary>
@@ -126,6 +188,7 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
 
         /// <summary> ！！ アクセス注意 ！！ 対象プレイヤーを追加します</summary>
         /// <param name="target"></param>
+        [PunRPC]
         public static void TargetListBind_Player(PlayerStatus target)
         {
             targetPlayerNumber.Add(target);
@@ -164,6 +227,16 @@ public static class GameStatus // ゲーム進行に関わる変数、定数をまとめた静的クラ
         public static List<MapInfoScriptableObject> GetTargetList_Map()
         {
             return targetMapNumber;
+        }
+
+        public static void TargetPlayerClear()
+        {
+            targetPlayerNumber.Clear();
+        }
+
+        public static void TargetMapClear()
+        {
+            targetMapNumber.Clear();
         }
     }
 }

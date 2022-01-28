@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class DiceRoll : MonoBehaviour
 {
     private Rigidbody rigidbody;
@@ -10,15 +12,20 @@ public class DiceRoll : MonoBehaviour
 
     int eyesNum = 0;
 
+    private Vector3 initVec;
+    private bool rollOn;
     // Start is called before the first frame update
     void Start()
     {
+        rollOn = false;
+        initVec = transform.position;
         rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!rollOn) return;
         DiceRotation();
 
         if (rollFlg == true)
@@ -32,6 +39,19 @@ public class DiceRoll : MonoBehaviour
             //サイコロの数字を読み取るメソッド
             DiceEyes();
         }
+    }
+
+    public void DiceOn()
+    {
+        rollOn = true;
+    }
+
+    public void DiceReset()
+    {
+        transform.position = initVec;
+        rigidbody.isKinematic = true;
+        rollOn = false;
+        eyesNum = 0;
     }
 
     private void DiceEyes()

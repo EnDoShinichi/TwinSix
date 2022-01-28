@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065068d10ad1b3c498d1fdbbb07ffff9, type: 3}
+  m_Name: testData14
+  m_EditorClassIdentifier: 
+  mapNameData: testData14
+  mapPositionData: {x: -9, y: 0, z: 3}
+  mapEventData: {fileID: 3524072898810951158, guid: fc1ee5cd264d8fe44aa324f776e3530b, type: 3}
+  nextMapData:
+  - {fileID: 11400000, guid: e710e21c4e407b9478d240b88544c597, type: 2}
+  beforeMapData:
+  - {fileID: 11400000, guid: 9305151e79836934181f67a982cd8d30, type: 2}

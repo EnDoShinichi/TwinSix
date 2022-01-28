@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: testData1
   m_EditorClassIdentifier: 
   mapNameData: testData1
-  mapPositionData: {x: 1, y: 1, z: 1}
-  mapEventData: {fileID: 8328670215694624117, guid: fb7d78f3b1e34bf4d95309ac970856fd, type: 3}
+  mapPositionData: {x: 3, y: 0, z: 0}
+  mapEventData: {fileID: 1116572311992747250, guid: 6853ec42f2709c04d9c80c02431fd826, type: 3}
   nextMapData:
-  - {fileID: 11400000, guid: 18d0be4c05ab79b4aaf681aa982b2a49, type: 2}
+  - {fileID: 11400000, guid: 9b913fefda82f86449d3756a3541ca43, type: 2}
   beforeMapData:
   - {fileID: 11400000, guid: 18d0be4c05ab79b4aaf681aa982b2a49, type: 2}

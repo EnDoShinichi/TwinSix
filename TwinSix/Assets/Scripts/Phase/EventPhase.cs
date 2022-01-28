@@ -2,23 +2,57 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class EventPhase : MonoBehaviour,IPhase
 {
     public event Action NextPhase;
 
+    PhotonView view;
+    bool startFlg;
+    private void Start()
+    {
+        view = GetComponent<PhotonView>();
+        startFlg = false;
+    }
+
+    [PunRPC]
+    public void PhaseCompleatesynchronize(int number)
+    {
+        GameStatus.lockMenber.CompleateScene(number);
+    }
+
+    [PunRPC]
     public void PhaseEnd()
     {
-        throw new NotImplementedException();
+        startFlg = false;
+        if (PhotonNetwork.IsMasterClient) NextPhase();
     }
 
+    [PunRPC]
     public void PhaseStart(PlayerStatus turnObject)
     {
-        throw new NotImplementedException();
+        if (PhotonNetwork.LocalPlayer.ActorNumber - 1 != turnObject.id)
+        {
+            view.RPC(nameof(PhaseCompleatesynchronize), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
+        }
+        GameStatus.lockMenber.TargetListBind_Player(turnObject);
+        turnObject.myMapPosition.mapEventData.MapEvent();
+        startFlg = true;
+        StartCoroutine(stop());
     }
 
+    [PunRPC]
     public void PhaseUpdate()
     {
-        throw new NotImplementedException();
+        if (!startFlg) return;
+        if (GameStatus.lockMenber.CompleateCheck()) PhaseEnd();
+    }
+
+    IEnumerator stop()
+    {
+        yield return new WaitForSeconds(2);
+        view.RPC(nameof(PhaseCompleatesynchronize), RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber - 1);
     }
 }

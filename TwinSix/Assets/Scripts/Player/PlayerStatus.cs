@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 [Serializable]
 public class PlayerStatus : MonoBehaviour
@@ -27,7 +29,7 @@ public class PlayerStatus : MonoBehaviour
 
     private bool activeateFlg = false; // 初期化フラグ
 
-
+    private PhotonView view;
     // 初期化を行うクラス(一回のみ実行可能)
     public void StatusActiveate(int money, int ID, int doubtCount, string name, MapInfoScriptableObject defaultPosition)
     {
@@ -43,6 +45,8 @@ public class PlayerStatus : MonoBehaviour
         actionData = true;
         activeateFlg = true;
         myMapPosition = defaultPosition;
+
+        view = GetComponent<PhotonView>();
     }
 
     #region getプロパティ
@@ -107,13 +111,18 @@ public class PlayerStatus : MonoBehaviour
 
     public void SetGameObject(GameObject newObject)
     {
-        if (playerObject == null) playerObject = newObject;
+        if (playerObject == null)
+        {
+            playerObject = newObject;
+            DontDestroyOnLoad(playerObject);
+        }
         else Debug.LogError("もうすでに値が設定されています");
     }
 
     public void AddMoney(int addAmount)
     {
         moneyData += addAmount;
+        view.RPC(nameof(Synchronize), RpcTarget.All, money, dice, doubtDice, doubtCount, doubt);
     }
 
     public void SetID(int newID)
@@ -125,11 +134,13 @@ public class PlayerStatus : MonoBehaviour
     public void SetDice(int newDice)
     {
         dice = newDice;
+        view.RPC(nameof(Synchronize), RpcTarget.All, money, dice, doubtDice, doubtCount, doubt);
     }
 
     public void AddDoubtCount(int addAmount)
     {
         doubtCountData += addAmount;
+        view.RPC(nameof(Synchronize), RpcTarget.All, money, dice, doubtDice, doubtCount, doubt);
     }
 
     public void SetPlayerName(string newName)
@@ -141,11 +152,13 @@ public class PlayerStatus : MonoBehaviour
     public void SetDoubt(bool newFlg)
     {
         doubt = newFlg;
+        view.RPC(nameof(Synchronize), RpcTarget.All, money, dice, doubtDice, doubtCount, doubt);
     }
 
     public void SetDoubtDice(int newDoubtDice)
     {
         doubtDiceData = newDoubtDice;
+        view.RPC(nameof(Synchronize),RpcTarget.All,money,dice,doubtDice,doubtCount,doubt);
     }
 
     public void SetAction(bool newAction)
@@ -158,4 +171,15 @@ public class PlayerStatus : MonoBehaviour
         myMapPositionData = newMap;
     }
     #endregion
+
+    [PunRPC]
+    private void Synchronize(int money,int dice,int doubtDice,int doubtCount,bool doubt)
+    {
+        PlayerStatus status = GameStatus.lockMenber.PlayerStatusGeter(id);
+        status.money = money;
+        status.dice = dice;
+        status.doubtDice = doubtDice;
+        status.doubtCount = doubtCount;
+        status.doubt = doubt;
+    }
 }

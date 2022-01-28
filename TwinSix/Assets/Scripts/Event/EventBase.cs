@@ -33,4 +33,15 @@ public class EventBase:MonoBehaviour
         Debug.LogError("直接EventBaseにアクセスされています");
         return EventType.NONE;
     }
+
+    public virtual void EventSynchronize()
+    {
+        Debug.LogError("直接イベントベースにアクセスされています");
+    }
+
+    public virtual bool EventComplete()
+    {
+        Debug.LogError("直接EventBaseにアクセスされています");
+        return false;
+    }
 }

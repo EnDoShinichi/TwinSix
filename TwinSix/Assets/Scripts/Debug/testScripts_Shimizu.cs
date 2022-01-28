@@ -19,10 +19,10 @@ public class testScripts_Shimizu : MonoBehaviour
     {
         GameObject obj = Instantiate(playerData);
         status = obj.GetComponent<PlayerStatus>();
-        status.StatusActiveate(2000, 1, 3, "player", debugPos);
+        // status.StatusActiveate(2000, 1, 3, "player", debugPos);
         GameObject obj2 = Instantiate(playerData);
         status2 = obj2.GetComponent<PlayerStatus>();
-        status2.StatusActiveate(1000, 1, 3, "player2", debugPos);
+        // status2.StatusActiveate(1000, 1, 3, "player2", debugPos);
         data = result.GetComponent<ResultManager>();
         List<PlayerStatus> state = new List<PlayerStatus>();
         state.Add(status);
